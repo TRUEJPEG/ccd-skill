@@ -1,4 +1,4 @@
 interface:
-  display_name: "图片反推与固定风格"
-  short_description: "反推图片或改写提示词，保留关键元素并套用人物、皮肤、CCD或独立固定风格"
+  display_name: "CCD直闪写实人像提示词"
+  short_description: "反推图片或改写提示词，保留关键元素并套用人物、皮肤和CCD直闪风格"
   default_prompt: "请使用 $ccd，根据我提供的图片或文字写出完整、详细、可复制的中文生图提示词。"
