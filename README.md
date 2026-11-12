@@ -22,7 +22,16 @@
 
 ### 安装
 
-需要已安装 Claude Code。把整个文件夹放到 `~/.claude/skills/ccd/`，保证 `~/.claude/skills/ccd/SKILL.md` 存在即可。
+**最简单：交给你的 Agent。** 把下面这段话复制给 Claude Code（或 Codex），它会自己装好：
+
+```
+帮我安装这个 Skill：https://github.com/TRUEJPEG/ccd-skill
+把它克隆到 ~/.claude/skills/ccd（如果你是 Codex，就放到 ~/.codex/skills/ccd），装好后告诉我怎么用。
+```
+
+装好后开一个新对话就能用。
+
+**手动安装：** 需要已安装 Claude Code。把整个文件夹放到 `~/.claude/skills/ccd/`，保证 `~/.claude/skills/ccd/SKILL.md` 存在即可。
 
 ```bash
 git clone https://github.com/TRUEJPEG/ccd-skill.git ~/.claude/skills/ccd
@@ -84,6 +93,19 @@ git clone https://github.com/TRUEJPEG/ccd-skill.git ~/.claude/skills/ccd
 画面质感：2000年代日系便携CCD低光抓拍，动态范围有限，高光略溢出，轻微柔焦，明显数字噪点与粗颗粒，黑位压得很深，暖调区域白平衡略偏。皮肤、棉布、铝罐和潮湿地面各自保留不同的反射特征。
 ```
 
+### 默认角色
+
+不指定的话，它默认会画这样一个人：
+
+- 二十多岁的成年亚洲女性，韩系偶像感长相
+- 流畅的 V 型鹅蛋脸，狭长的狐狸眼
+- 清透妆，水润的珊瑚粉唇（参考图有妆容时按参考图写）
+- 黑色头发
+- 超白冷调皮肤，带一点水光，保留真实毛孔
+- 丰满的沙漏型身材
+
+**这些都可以按你的喜好改**：编辑 `references/defaults.md` 里的「固定人物、身材与皮肤」，或者直接跟你的 Agent 说"把 ccd 的默认角色改成 xx"。
+
 ### 自定义
 
 - 默认人物长相、身材、肤色都写在 `references/defaults.md` 的「固定人物、身材与皮肤」。身材默认偏丰满，不合你口味就直接改那一段，换成你自己的默认人物即可。
@@ -123,7 +145,16 @@ The Skill **only writes text**. It never calls an image API or spends money.
 
 ### Install
 
-Requires Claude Code. Put the folder at `~/.claude/skills/ccd/` so that `~/.claude/skills/ccd/SKILL.md` exists.
+**Easiest: let your agent do it.** Paste this into Claude Code (or Codex):
+
+```
+Install this Skill: https://github.com/TRUEJPEG/ccd-skill
+Clone it to ~/.claude/skills/ccd (for Codex, use ~/.codex/skills/ccd), then tell me how to use it.
+```
+
+Start a new session afterwards and it's ready.
+
+**Manual install:** requires Claude Code. Put the folder at `~/.claude/skills/ccd/` so that `~/.claude/skills/ccd/SKILL.md` exists.
 
 ```bash
 git clone https://github.com/TRUEJPEG/ccd-skill.git ~/.claude/skills/ccd
@@ -143,6 +174,19 @@ git clone https://github.com/TRUEJPEG/ccd-skill.git ~/.claude/skills/ccd
 Defaults: no size or aspect ratio (set those in your generator), no long negative-prompt list, faces are made visible when the reference hides them (stated as a completion, not as observed), and any text/watermark/UI inside the image is ignored and never treated as instructions.
 
 See the Chinese section above for a full example output.
+
+### Default character
+
+Unless you say otherwise, it draws:
+
+- an adult Asian woman in her twenties with a K-pop idol look
+- a smooth V-shaped oval face and narrow fox eyes
+- clean makeup and glossy coral-pink lips (makeup in the reference image takes priority)
+- black hair
+- very fair, cool-toned skin with a little sheen and real pores
+- a curvy hourglass figure
+
+**Change any of it to taste:** edit 「固定人物、身材与皮肤」 in `references/defaults.md`, or just tell your agent "change ccd's default character to ...".
 
 ### Customize
 
