@@ -18,14 +18,6 @@
 
 输出按固定的中文分段标签组织：`人物：`、`身材：`、`皮肤：`、`表情：`、`姿态：`、`服装：`、`场景：`、`光线：`、`构图：`、`相机参数：`、`画面质感：`。每张图一个代码块，小标题放在代码块外，方便直接复制。
 
-另外内置两种独立风格，用前缀切换：
-
-| 前缀 | 风格 |
-|---|---|
-| （无） | 默认：写实 CCD 暗背景直闪 |
-| `moe` | Moebius 式深渊极繁插画：极低仰视、残破腐蚀材质、靛蓝雾气、烫金几何远景 |
-| `中世纪` | 中世纪奇幻实拍：35mm 贴地极低仰拍、浅灰白哥特石墙、深钴蓝天空、胶片颗粒和旧印刷网点 |
-
 这个 Skill **只输出文字**，不会替你调用任何生图接口或花钱。
 
 ### 安装
@@ -50,16 +42,6 @@ git clone https://github.com/TRUEJPEG/ccd-skill.git ~/.claude/skills/ccd
 ```
 
 或者直接说"把这张图反推成 CCD 提示词"。
-
-**切换风格**：在前面加前缀（`moe` 大小写都行）
-
-```
-/ccd moe
-```
-
-```
-/ccd 中世纪
-```
 
 **改写已有提示词**：`/ccd` 后面直接粘贴别人的提示词（英文、关键词串、动漫风都可以），它会去掉动漫画法、补全结构，改写成写实 CCD 版本。
 
@@ -105,17 +87,15 @@ git clone https://github.com/TRUEJPEG/ccd-skill.git ~/.claude/skills/ccd
 ### 自定义
 
 - 默认人物长相、身材、肤色都写在 `references/defaults.md` 的「固定人物、身材与皮肤」。身材默认偏丰满，不合你口味就直接改那一段，换成你自己的默认人物即可。
-- 三种风格分别在 `references/defaults.md`、`references/moe.md`、`references/medieval.md`，想加新风格可以照着写一个新文件，再在 `SKILL.md` 的路由表里加一行。
+- 光线、相机参数和画面质感也在 `references/defaults.md` 的「固定摄影基盘」，想换风格就改这一段。
 
 ### 文件结构
 
 ```
 ccd/
-├── SKILL.md                 # 入口：路由、读图规则、交付格式、自查
+├── SKILL.md                 # 入口：读图规则、交付格式、自查
 ├── references/
-│   ├── defaults.md          # 默认人物 + 写实 CCD 摄影基盘
-│   ├── moe.md               # moe 前缀：深渊极繁插画
-│   └── medieval.md          # 中世纪前缀：极低仰拍胶片
+│   └── defaults.md          # 默认人物 + 写实 CCD 摄影基盘
 └── agents/openai.yaml       # Codex 界面信息（Claude Code 不读）
 ```
 
@@ -139,14 +119,6 @@ ccd/
 
 Prompts are organized with fixed Chinese section labels (`人物` subject, `身材` body, `皮肤` skin, `表情` expression, `姿态` pose, `服装` outfit, `场景` scene, `光线` lighting, `构图` composition, `相机参数` camera, `画面质感` texture). One code block per image, with a short title outside the block.
 
-Two standalone styles are switched with a prefix:
-
-| Prefix | Style |
-|---|---|
-| (none) | Default: realistic CCD, dark background, direct flash |
-| `moe` | Moebius-inspired abyssal maximalist illustration: extreme low angle, ruined and corroded materials, indigo mist, gold-leaf geometric backdrop |
-| `中世纪` ("medieval") | Medieval fantasy photography: 35mm ground-level low angle, pale Gothic stone wall, deep cobalt sky, film grain and old print halftone |
-
 The Skill **only writes text**. It never calls an image API or spends money.
 
 ### Install
@@ -165,7 +137,6 @@ git clone https://github.com/TRUEJPEG/ccd-skill.git ~/.claude/skills/ccd
 ### Usage
 
 - **Reverse an image (default CCD):** drop an image into the chat and type `/ccd`, or just say "turn this into a CCD prompt".
-- **Switch style:** `/ccd moe` or `/ccd 中世纪` (the `moe` prefix is case-insensitive).
 - **Rewrite a prompt:** `/ccd` followed by any prompt (English, tag lists, anime-style). It strips anime rendering, fills in structure, and rewrites it as a realistic CCD prompt.
 - **Partial edits:** "swap the hoodie for a black leather jacket, give me the full prompt" returns the whole updated prompt, not a fragment.
 
@@ -175,7 +146,7 @@ See the Chinese section above for a full example output.
 
 ### Customize
 
-The default character, body (curvy by default) and skin live in `references/defaults.md`; edit that section to make it your own. Each style lives in its own file under `references/`; to add a style, write a new file and add one row to the routing table in `SKILL.md`.
+The default character, body (curvy by default) and skin live in `references/defaults.md`; edit that section to make it your own. Lighting, camera and texture rules are in the same file under 「固定摄影基盘」.
 
 ### Credits & license
 
